@@ -1,0 +1,9 @@
+<view class='container'>
+  <view class='title'>{{detailList[0].title}}</view>
+  <view>
+    <image class='image' src='{{detailList[0].imagePath}}'></image>
+  </view>
+  <view class='content'><text decode='true'>&emsp;&emsp;{{detailList[0].content}}</text></view>
+
+</view>
+  <view class='date'>{{detailList[0].date}}</view>

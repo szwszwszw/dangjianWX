@@ -1,0 +1,30 @@
+<view>
+  <!--背景图片-->
+  <view>
+    <image class='bgimg' src='../../images/study.jpg'></image>
+  </view>
+
+  <view class='con'>
+
+    <view class='options'>
+      <!--题目-->
+      <view class='text'>
+        <text decode="{{true}}">&emsp;&emsp;{{studyList[index].question}}</text>
+      </view>
+      <!--选项-->
+      <button class='option' id='A' bindtap='btnOption' style='background-color:{{colorA}};text-align:left'>{{studyList[index].A}}</button>
+
+      <button class='option' id='B' bindtap='btnOption' style='background-color:{{colorB}};text-align:left'>{{studyList[index].B}}</button>
+
+      <button class='option' id='C' bindtap='btnOption' style='background-color:{{colorC}};text-align:left'>{{studyList[index].C}}</button>
+
+      <button class='option' id='D' bindtap='btnOption' style='background-color:{{colorD}};text-align:left'>{{studyList[index].D}}</button>
+ <view class='text2'>学习进度{{index+1}}/{{studyList.length}}</view>
+ <view class='btn-view'>
+ <button class='btn' type='primary' bindtap='lastQuestion'>上一题</button>
+      <button class='btn' type='primary' bindtap='nextQuestion'>下一题</button>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,79 @@
+<view>
+  <view class='title'>个人资料</view>
+  <!--显示个人信息-->
+  <block wx:if='{{!isEdit}}'>
+    <view class='border'>
+      <view class='text'>
+        <text decode='true'>姓&emsp;&emsp;名：{{name}}</text>
+      </view>
+      <view class='line'></view>
+      <view class='text'>
+        <text decode='true'>性&emsp;&emsp;别：{{sex}}</text>
+      </view>
+      <view class='line'></view>
+      <view class='text'>
+        <text decode='true'>学&emsp;&emsp;院：{{college}}</text>
+      </view>
+      <view class='line'></view>
+      <view class='text'>
+        <text decode='true'>电&emsp;&emsp;话：{{tel}}</text>
+      </view>
+      <view class='line'></view>
+      <view class='text'>
+        <text decode='true'>邮&emsp;&emsp;箱：{{email}}</text>
+      </view>
+      <view class='line'></view>
+      <view class='text'>
+        <text>出生日期：{{birthday}}</text>
+      </view>
+      <view class='line'></view>
+      <view class='text'>
+        <text decode='true'>家&emsp;&emsp;乡：{{hometown}}</text>
+      </view>
+    </view>
+    <button class='button' type='primary' bindtap='bindEdit'>编辑资料</button>
+  </block>
+
+  <!--编辑个人信息-->
+  <block wx:if='{{isEdit}}'>
+    <form bindsubmit='formSubmit'>
+      <view class='border'>
+        <view class='text'>
+          <text decode='true'>姓&emsp;&emsp;名：</text>
+          <input class='input' placeholder='{{name}}' name='name'></input>
+        </view>
+        <view class='line'></view>
+        <view class='text'>
+          <text decode='true'>性&emsp;&emsp;别：</text>
+          <input class='input' placeholder='{{sex}}' name='sex'></input>
+        </view>
+        <view class='line'></view>
+        <view class='text'>
+          <text decode='true'>学&emsp;&emsp;院：</text>
+          <input class='input' placeholder='{{college}}' name='college'></input>
+        </view>
+        <view class='line'></view>
+        <view class='text'>
+          <text decode='true'>电&emsp;&emsp;话：</text>
+          <input class='input' placeholder='{{tel}}' name='tel'></input>
+        </view>
+        <view class='line'></view>
+        <view class='text'>
+          <text decode='true'>邮&emsp;&emsp;箱：</text>
+          <input class='input' placeholder='{{email}}' name='email'></input>
+        </view>
+        <view class='line'></view>
+        <view class='text'>
+          <text>出生日期：</text>
+          <input class='input' placeholder='{{birthday}}' name='birthday'></input>
+        </view>
+        <view class='line'></view>
+        <view class='text'>
+          <text decode='true'>家&emsp;&emsp;乡：</text>
+          <input class='input' placeholder='{{hometown}}' name='hometown'></input>
+        </view>
+      </view>
+      <button class='button' type='primary' form-type='submit'>确认修改</button>
+    </form>
+  </block>
+</view>

@@ -1,0 +1,25 @@
+.container{
+  background-color: #eee;
+}
+.top-line{
+  height: 2rpx;
+  background-color: red;
+}
+.bottom-line{
+  height: 2rpx;
+  background-color: red;
+}
+.title{
+  font-size: 50rpx;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+.answer{
+  color: red; 
+  display: inline;
+}
+.record{
+  margin: 10rpx 10rpx 0rpx 10rpx;
+  background-color: #fff;
+}

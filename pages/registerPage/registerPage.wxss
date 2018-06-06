@@ -1,0 +1,36 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  height: 250rpx;
+  width: 250rpx;
+  margin: 100rpx 0rpx 50rpx 0rpx;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin: 30rpx 0 0 0;
+}
+
+.text {
+  margin-right: 20rpx;
+}
+
+.button {
+  width: 500rpx;
+  margin-top: 50rpx;
+}
+
+.border {
+  border: 2rpx solid #ccc;
+}
+
+.line {
+  height: 2rpx;
+  background-color: #ccc;
+}

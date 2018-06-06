@@ -1,0 +1,23 @@
+<view class='container'>
+  <image class='image' src='../../images/icons/register.png'></image>
+  <view class='border'>
+    <view class='row'>
+      <text class='text' decode='true'>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</text>
+      <input placeholder='请输入账号'></input>
+    </view>
+    <view class='line'></view>
+    <view class='row'>
+      <text class='text' decode='true'>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</text>
+      <input placeholder='请输入密码'></input>
+    </view>
+    <view class='line'></view>
+    <view class='row'>
+      <text class='text'>确认密码：</text>
+      <input placeholder='请确认密码'></input>
+    </view>
+  </view>
+  <view>
+    <button class='button' type='primary'>注册</button>
+  </view>
+
+</view>

@@ -1,0 +1,39 @@
+<view class='container'>
+
+  <swiper class='swiper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='margin'>
+    <view class='bettwen'>
+      <view class='title'>
+        <view class='title1'>主要新闻</view>
+        <image class='icon' src='../../images/icons/news.png'></image>
+      </view>
+      <view class='font'>查看更多>></view>
+    </view>
+    <view class='bettwen' wx:for="{{newsList}}" wx:key="" wx:if="{{index<3}}">
+      <text>{{item.topic}}</text>
+      <text class='font'>{{item.data}}</text>
+    </view>
+  </view>
+
+  <view class='margin'>
+    <view class='bettwen'>
+      <view class='title'>
+        <view class='title1'>通知公告</view>
+        <image class='icon' src='../../images/icons/inform.png'></image>
+      </view>
+      <view class='font'>查看更多>></view>
+    </view>
+    <view class='bettwen' wx:for="{{informList}}" wx:key="" wx:if="{{index<3}}">
+      <text>{{item.inform}}</text>
+      <text class='font'>{{item.data}}</text>
+    </view>
+  </view>
+
+</view>

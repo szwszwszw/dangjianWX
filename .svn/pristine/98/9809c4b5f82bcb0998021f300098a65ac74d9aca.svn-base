@@ -1,0 +1,38 @@
+.container{
+  height: 100vh;
+}
+.swiper{
+  height: 38vh;
+}
+.slide-image{
+  height: 38vh;
+  width: 750rpx;
+}
+.bettwen{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.title1{
+  font-weight: bold;
+  color: red;
+}
+.margin{
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.font{
+  font-size: 30rpx;
+  color: #999696;
+}
+.icon{
+  height: 50rpx;
+  width: 50rpx;
+  margin-left: 10rpx;
+}
+.title{
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/mainPage/mainPage",
+    "pages/loginPage/loginPage",
+    
+    "pages/foundPwdPage/foundPwdPage",
+    "pages/registerPage/registerPage",
+    "pages/changePwdPage/changePwdPage",
+    "pages/recordPage/recordPage",
+    "pages/detailPage/detailPage",
+    "pages/morePage/morePage",
+    "pages/answerPage/answerPage",
+    "pages/selfPage/selfPage",
+    "pages/studyPage/studyPage"
+  ],
+  "tabBar": {
+    "selectedColor": "#F90505",
+    "list": [
+      {
+        "pagePath": "pages/mainPage/mainPage",
+        "text": "主页",
+        "iconPath": "images/tabbar/main1.png",
+        "selectedIconPath": "images/tabbar/main2.png"
+      },
+      {
+        "pagePath": "pages/selfPage/selfPage",
+        "text": "个人",
+        "iconPath": "images/tabbar/self1.png",
+        "selectedIconPath": "images/tabbar/self2.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#F62121",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "掌上党建",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  }
+}

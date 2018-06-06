@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/answerPage/answerPage",
+    "pages/selfPage/selfPage",
+    "pages/loginPage/loginPage",
+    "pages/mainPage/mainPage",
+    "pages/changePwdPage/changePwdPage",
+    "pages/foundPwdPage/foundPwdPage",
+    "pages/recordPage/recordPage",
+    "pages/registerPage/registerPage",
+    "pages/studyPage/studyPage",
+    "pages/morePage/morePage",
+    "pages/detailPage/detailPage"
+  ],
+  "tabBar": {
+    "selectedColor": "#F90505",
+    "list": [
+      {
+        "pagePath": "pages/mainPage/mainPage",
+        "text": "主页",
+        "iconPath": "images/tabbar/main1.png",
+        "selectedIconPath": "images/tabbar/main2.png"
+      },
+      {
+        "pagePath": "pages/selfPage/selfPage",
+        "text": "个人",
+        "iconPath": "images/tabbar/self1.png",
+        "selectedIconPath": "images/tabbar/self2.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#F62121",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "党建小程序",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  }
+}

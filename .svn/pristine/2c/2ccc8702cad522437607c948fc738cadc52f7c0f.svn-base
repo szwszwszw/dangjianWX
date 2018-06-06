@@ -1,0 +1,30 @@
+<view class='container'>
+  <view class='headline'>所有内容</view>
+  <view wx:for="{{moreList}}" wx:key=''>
+
+    <view class='record'>
+      <view class='top-line'></view>
+      <!--为每一个标题绑定其对应id-->
+      <view class='row' bindtap='bindDetail' data-detail-id='{{item.id}}'>
+        <view>
+          <image class='image' src='{{item.imagePath}}'></image>
+        </view>
+
+        <view class='text'>
+          <view class='title'>
+            <text>{{item.title}}</text>
+          </view>
+          <!-- <view class='over'>
+            <text>{{item.content}}</text>
+          </view> -->
+          <view class='date'>
+            <text>{{item.date}}</text>
+          </view>
+        </view>
+
+      </view>
+      <view class='bottom-line'></view>
+    </view>
+
+  </view>
+</view>

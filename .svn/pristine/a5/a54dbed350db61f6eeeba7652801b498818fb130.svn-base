@@ -1,0 +1,34 @@
+.bgimg {
+  height: 100%;
+  width: 750rpx;
+  position: absolute;
+}
+.con {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.option {
+  width: 650rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.options{
+  position: absolute;
+  margin-top: 220rpx;
+}
+.text{
+  font-size: 38rpx;
+  margin: 0rpx 0rpx 50rpx 20rpx;
+}
+.hint{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0rpx 20rpx 0rpx 20rpx
+}
+.hint-color{
+  color: red;
+}

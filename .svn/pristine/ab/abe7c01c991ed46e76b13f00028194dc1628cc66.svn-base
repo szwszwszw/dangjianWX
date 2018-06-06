@@ -1,0 +1,15 @@
+<view class='container'>
+  <view class='title'>错题记录</view>
+  <view class='record' wx:for='{{record}}' wx:key=''>
+    <view class='top-line'></view>
+    <view>
+      <text>{{item.question}}</text>
+      <text class='answer'>{{item.answer}}</text>
+    </view>
+    <view>{{item.option[0]}}</view>
+    <view>{{item.option[1]}}</view>
+    <view>{{item.option[2]}}</view>
+    <view>{{item.option[3]}}</view>
+    <view class='bottom-line'></view>
+  </view>
+</view>

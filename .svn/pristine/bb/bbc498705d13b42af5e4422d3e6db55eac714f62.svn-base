@@ -1,0 +1,30 @@
+<view class='container'>
+
+  <view>
+    <image class='image' src='../../images/login.jpg'></image>
+  </view>
+
+  <view class='border'>
+    <view class='inline'>
+      <image class='icon' src='../../images/icons/user.png'></image>
+      <input class='input' placeholder='请输入账号'></input>
+    </view>
+    <view class='line'></view>
+    <view class='inline'>
+      <image class='icon' src='../../images/icons/pwd.png'></image>
+      <input class='input' placeholder='请输入密码'></input>
+    </view>
+  </view>
+
+  <view>
+    <button class='button' type='primary'>登录</button>
+    <view class='nav'>
+      <navigator url='' hover-class='nav-hover' class='nav-default'>注册</navigator>
+      <navigator url='' hover-class='nav-hover' class='nav-default'>找回密码</navigator>
+    </view>
+  </view>
+
+  <view class='end'>
+    <text>联系我们</text>
+  </view>
+</view>

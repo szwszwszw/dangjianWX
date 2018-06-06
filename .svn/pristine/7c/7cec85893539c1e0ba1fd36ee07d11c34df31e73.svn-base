@@ -1,0 +1,25 @@
+<view class='container'>
+  <image class='image' src='../../images/icons/changePwd.png'></image>
+  <form bindsubmit='formSubmit'>
+    <view class='border'>
+      <view class='row'>
+        <text class='text' decode='true'>原&emsp;密&emsp;码：</text>
+        <input placeholder='请输入原密码' name='oldPwd'></input>
+      </view>
+      <view class='line'></view>
+      <view class='row'>
+        <text class='text' decode='true'>新&emsp;密&emsp;码：</text>
+        <input placeholder='请输入新密码' name='newPwd' password='true'></input>
+      </view>
+      <view class='line'></view>
+      <view class='row'>
+        <text class='text'>确认新密码：</text>
+        <input placeholder='请确认新密码' name='rePwd' password='true'></input>
+      </view>
+    </view>
+
+    <view>
+      <button class='button' type='primary' form-type='submit'>确认修改</button>
+    </view>
+  </form>
+</view>

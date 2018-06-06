@@ -1,0 +1,16 @@
+<view class='container'>
+  <view class='title'>错题记录</view>
+  <view class='record' wx:for='{{record}}' wx:key=''>
+    <view class='top-line'></view>
+    <text>{{index+1}}.{{item.question}}</text>
+    <view>
+      <text class='choose'>错误答案：{{item.erroAnswer}}</text>
+      <text class='answer'>正确答案：{{item.realAnswer}}</text>
+    </view>
+    <view>A.{{item.a}}</view>
+    <view>B.{{item.b}}</view>
+    <view>C.{{item.c}}</view>
+    <view>D.{{item.d}}</view>
+    <view class='bottom-line'></view>
+  </view>
+</view>

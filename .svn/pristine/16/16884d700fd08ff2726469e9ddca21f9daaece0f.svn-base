@@ -1,0 +1,51 @@
+<view class='container'>
+  <!--主页滚动图片，遍历图片地址数组imgUrls-->
+  <swiper class='swiper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+ 
+  <view class='margin'>
+    <view class='bettwen'>
+      <view class='title'>
+        <view class='title1'>主要新闻</view>
+        <image class='icon' src='../../images/icons/news.png'></image>
+      </view>
+      <!--查看更多新闻-->
+      <view class='font' bindtap='moreNews'>查看更多>></view>
+    </view>
+     <!--遍历新闻数组newList-->
+    <view class='bettwen' wx:for="{{newsList}}" wx:key="" wx:if="{{index<3}}">
+      <!--获取新闻标题title，并为每一个标题绑定其对应id-->
+      <view  bindtap='bindDetail' data-detail-id='{{item.id}}'>
+      <text>{{item.title}}</text>
+      </view>
+      <!--获取新闻日期data-->
+       <text class='font'>{{item.date}}</text> 
+    </view>
+  </view>
+
+  <view class='margin'>
+    <view class='bettwen'>
+      <view class='title'>
+        <view class='title1'>通知公告</view>
+        <image class='icon' src='../../images/icons/inform.png'></image>
+      </view>
+      <!--查看更多公告-->
+      <view class='font' bindtap='moreInform'>查看更多>></view>
+    </view>
+      <!--遍历公告数组informList-->
+    <view class='bettwen' wx:for="{{informList}}" wx:key="" wx:if="{{index<3}}">
+      <!--获取公告标题title，并为每一个标题绑定其对应id-->
+      <view  bindtap='bindDetail' data-detail-id='{{item.id}}'>
+      <text>{{item.title}}</text>
+      </view>
+      <!--获取公告时间data-->
+      <text class='font'>{{item.date}}</text>
+    </view>
+  </view>
+
+</view>

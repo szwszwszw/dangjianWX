@@ -1,0 +1,146 @@
+// pages/personalPage/personalPage.js
+var app = getApp();
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    isEdit: false,
+    name: '',
+    sex: '',
+    college: '',
+    tel: '',
+    email: '',
+    birthday: '',
+    hometown: '',
+    //服务器地址
+    personalUrl: '',
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    //设置服务器地址、个人资料
+    this.setData({
+      personalUrl: app.globalData.urlPrefix + '',
+      name: app.globalData.name,
+      sex: app.globalData.sex,
+      college: app.globalData.college,
+      tel: app.globalData.tel,
+      email: app.globalData.email,
+      birthday: app.globalData.birthday,
+      hometown: app.globalData.hometown,
+    })
+
+  },
+
+  /**
+   * 编辑资料按钮
+   */
+  bindEdit: function () {
+    this.setData({
+      isEdit: true
+    })
+  },
+  /**
+   * 提交修改信息
+   */
+  formSubmit: function (e) {
+    var that = this;
+    //取出表单数据
+    var name = e.detail.value.name;
+    var sex = e.detail.value.sex;
+    var college = e.detail.value.college;
+    var tel = e.detail.value.tel;
+    var email = e.detail.value.email;
+    var birthday = e.detail.value.birthday;
+    var hometown = e.detail.value.hometown;
+    //向服务器提交表单数据
+    wx.request({
+      url: 'that.data.personalUrl',
+      method: 'POST',
+      data: {
+        name: name,
+        sex: sex,
+        college: college,
+        tel: tel,
+        email: email,
+        birthday: birthday,
+        hometown: hometown,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      success: function (res) {
+        if (res.data.isOK) {
+          wx.showToast({
+            title: '修改成功！',
+          })
+          wx.switchTab({
+            url: '../selfPage/selfPage',
+          })
+        }
+        else {
+          wx.showToast({
+            title: '提交失败！',
+          })
+        }
+      },
+      fail: function () {
+        console.log('请求失败')
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

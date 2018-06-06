@@ -1,0 +1,147 @@
+// pages/loginPage/loginPage.js
+var app = getApp();
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    //登录的服务器地址
+    loginUrl: ''
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    //设置登录的请求地址
+    this.setData({
+      loginUrl: app.globalData.urlPrefix + '/cpccs/wxlogin.action'
+    })
+  },
+
+  /**
+   * 提交登录的表单信息
+   */
+  formSubmit: function (e) {
+    var that = this;
+    //取出表单信息
+    var uid = e.detail.value.uid;
+    var pwd = e.detail.value.pwd;
+    if (uid == '' || uid == null) {
+      wx.showToast({
+        title: '账号不能为空！',
+        icon: 'none'
+      })
+    }
+    else if (pwd == '' || pwd == null) {
+      wx.showToast({
+        title: '密码不能为空！',
+        icon: 'none'
+      })
+    }
+    //请求服务器，提交登录信息
+    else {
+      //请求服务器
+      wx.request({
+        url: that.data.loginUrl,
+        method: 'POST',
+        data: {
+          uid: uid,
+          pwd: pwd
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+        },
+        //请求成功，服务器返回OK判断是否允许登录
+        success: function (res) {
+          console.log(res)
+          if (!res.data.OK) {
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none'
+            })
+          }
+          else {
+            wx.showToast({
+              title: res.data.msg,
+            })
+            //给全局变量赋值
+            app.globalData.uid = res.data.userInfo.uid;
+            app.globalData.name = res.data.userInfo.name;
+            app.globalData.sex = res.data.userInfo.sex;
+            app.globalData.college = res.data.userInfo.college;
+            app.globalData.tel = res.data.userInfo.tel;
+            app.globalData.email = res.data.userInfo.email;
+            app.globalData.qq = res.data.userInfo.qq;
+            app.globalData.birthday = res.data.userInfo.birthday;
+            app.globalData.hometown = res.data.userInfo.hometown;
+            //登录成功跳转主页
+            wx.switchTab({
+              url: '../mainPage/mainPage',
+            })
+          }
+        },
+        fail: function (res) {
+          console.log('请求服务器失败！')
+        }
+      })
+    }
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+  /**
+   *联系我们 
+   */
+  contactUs: function () {
+    wx.showModal({
+      content: 'LTW Team',
+    })
+  }
+})

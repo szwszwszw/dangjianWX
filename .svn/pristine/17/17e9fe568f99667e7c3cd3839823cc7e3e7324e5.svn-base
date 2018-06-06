@@ -1,0 +1,26 @@
+<view>
+  <view>
+    <image class='bgimg' src='../../images/question.jpg'></image>
+  </view>
+
+  <view class='con'>
+
+    <view class='options'>
+      <view class='text'>
+        <text decode="{{true}}">&emsp;&emsp;{{answerList[index].question}}</text>
+      </view>
+      <button class='option' id='A' bindtap='btnOption' style='background-color:{{colorA}};text-align:left'>{{answerList[index].A}}</button>
+
+      <button class='option' id='B' bindtap='btnOption' style='background-color:{{colorB}};text-align:left'>{{answerList[index].B}}</button>
+
+      <button class='option' id='C' bindtap='btnOption' style='background-color:{{colorC}};text-align:left'>{{answerList[index].C}}</button>
+
+      <button class='option' id='D' bindtap='btnOption' style='background-color:{{colorD}};text-align:left'>{{answerList[index].D}}</button>
+      <view class='hint'>
+        <view>答题进度：<text class='hint-color'>{{index+1}}/{{answerList.length}}</text></view>
+        <view>倒计时： <text class='hint-color'>{{second}}</text></view>
+      </view>
+    </view>
+
+  </view>
+</view>

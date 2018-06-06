@@ -1,0 +1,23 @@
+<view>
+  <view>
+    <image class='bgimg' src='../../images/question.jpg'></image>
+  </view>
+
+  <view class='con'>
+
+    <view class='options'>
+    <view  class='text'>
+      <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{postList[index].question}}</text>
+    </view>
+      <button class='option' id='A' bindtap='btnOption' style='background-color:{{colorA}};text-align:left'>{{postList[index].option[0]}}</button>
+
+      <button class='option' id='B' bindtap='btnOption' style='background-color:{{colorB}};text-align:left'>{{postList[index].option[1]}}</button>
+
+      <button class='option' id='C' bindtap='btnOption' style='background-color:{{colorC}};text-align:left'>{{postList[index].option[2]}}</button>
+
+      <button class='option' id='D' bindtap='btnOption' style='background-color:{{colorD}};text-align:left'>{{postList[index].option[3]}}</button>
+      <view>答题进度{{index+1}}/{{postList.length}}</view>
+    </view>
+
+  </view>
+</view>

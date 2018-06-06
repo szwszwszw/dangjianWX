@@ -1,0 +1,42 @@
+<view>
+  <!--背景图片-->
+  <view>
+    <image class='bgimg' src='../../images/study.jpg'></image>
+  </view>
+
+  <view class='con'>
+
+    <view class='options'>
+      <!--题目-->
+      <view class='text'>
+        <text decode="{{true}}">&emsp;&emsp;{{studyList[index].question}}</text>
+      </view>
+      <!--选项-->
+      <button class='option' id='A' bindtap='btnOption' style='background-color:{{colorA}};text-align:left'>{{studyList[index].A}}
+        <image src='../../images/icons/right.png' style='width:60rpx;height:60rpx' hidden='{{rightA}}'></image>
+        <image src='../../images/icons/wrong.png' style='width:60rpx;height:60rpx' hidden='{{wrongA}}'></image>
+      </button>
+
+      <button class='option' id='B' bindtap='btnOption' style='background-color:{{colorB}};text-align:left'>{{studyList[index].B}}
+        <image src='../../images/icons/right.png' style='width:60rpx;height:60rpx' hidden='{{rightB}}'></image>
+        <image src='../../images/icons/wrong.png' style='width:60rpx;height:60rpx' hidden='{{wrongB}}'></image>
+      </button>
+
+      <button class='option' id='C' bindtap='btnOption' style='background-color:{{colorC}};text-align:left'>{{studyList[index].C}}
+        <image src='../../images/icons/right.png' style='width:60rpx;height:60rpx' hidden='{{rightC}}'></image>
+        <image src='../../images/icons/wrong.png' style='width:60rpx;height:60rpx' hidden='{{wrongC}}'></image>
+      </button>
+
+      <button class='option' id='D' bindtap='btnOption' style='background-color:{{colorD}};text-align:left'>{{studyList[index].D}}
+        <image src='../../images/icons/right.png' style='width:60rpx;height:60rpx' hidden='{{rightD}}'></image>
+        <image src='../../images/icons/wrong.png' style='width:60rpx;height:60rpx' hidden='{{wrongD}}'></image>
+      </button>
+      <view class='text2'>学习进度{{index+1}}/{{studyList.length}}</view>
+      <view class='btn-view'>
+        <button class='btn' type='primary' bindtap='lastQuestion'>上一题</button>
+        <button class='btn' type='primary' bindtap='nextQuestion'>下一题</button>
+      </view>
+    </view>
+
+  </view>
+</view>

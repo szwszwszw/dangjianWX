@@ -1,0 +1,42 @@
+<view>
+  <view>
+    <image class='bgimg' src='../../images/question.jpg'></image>
+  </view>
+
+  <view class='con'>
+
+    <view class='options'>
+      <view class='text'>
+        <text decode="{{true}}">&emsp;&emsp;{{index+1}}.{{answerList[index].question}}</text>
+      </view>
+      <button class='option' id='A' bindtap='btnOption' style='background-color:{{colorA}};text-align:left'>A.{{answerList[index].a}}
+        <image src='../../images/icons/right.png' style='width:60rpx;height:60rpx' hidden='{{rightA}}'></image>
+        <image src='../../images/icons/wrong.png' style='width:60rpx;height:60rpx' hidden='{{wrongA}}'></image>
+      </button>
+
+      <button class='option' id='B' bindtap='btnOption' style='background-color:{{colorB}};text-align:left'>B.{{answerList[index].b}}
+        <image src='../../images/icons/right.png' style='width:60rpx;height:60rpx' hidden='{{rightB}}'></image>
+        <image src='../../images/icons/wrong.png' style='width:60rpx;height:60rpx' hidden='{{wrongB}}'></image>
+      </button>
+
+      <button class='option' id='C' bindtap='btnOption' style='background-color:{{colorC}};text-align:left'>C.{{answerList[index].c}}
+        <image src='../../images/icons/right.png' style='width:60rpx;height:60rpx' hidden='{{rightC}}'></image>
+        <image src='../../images/icons/wrong.png' style='width:60rpx;height:60rpx' hidden='{{wrongC}}'></image>
+      </button>
+
+      <button class='option' id='D' bindtap='btnOption' style='background-color:{{colorD}};text-align:left'>D.{{answerList[index].d}}
+        <image src='../../images/icons/right.png' style='width:60rpx;height:60rpx' hidden='{{rightD}}'></image>
+        <image src='../../images/icons/wrong.png' style='width:60rpx;height:60rpx' hidden='{{wrongD}}'></image>
+      </button>
+      <view class='hint'>
+        <view>答题进度：
+          <text class='hint-color'>{{index+1}}/{{answerList.length}}</text>
+        </view>
+        <view>倒计时：
+          <text class='hint-color'>{{second}}</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #eee;
+}
+
+.headline {
+  text-align: center;
+  font-size: 50rpx;
+  font-weight: bold;
+  color: red;
+}
+
+.record {
+  margin: 10rpx 10rpx 0rpx 10rpx;
+  background-color: #fff;
+}
+
+.top-line {
+  width: 100%;
+  height: 2rpx;
+  background-color: red;
+  margin-bottom: 10rpx;
+}
+
+.bottom-line {
+  width: 100%;
+  height: 2rpx;
+  background-color: red;
+  margin-top: 10rpx;
+}
+
+.image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.text {
+  margin-left: 20rpx;
+}
+
+.date {
+  font-size: 30rpx;
+  color: #999696;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+/*文本溢出
+ .over{
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+} */

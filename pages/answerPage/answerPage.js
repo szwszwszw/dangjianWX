@@ -1,0 +1,328 @@
+// pages/main/main.js
+var app = getApp();
+var timer;
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    //正确与错误提示图标
+    rightA: true,
+    rightB: true,
+    rightC: true,
+    rightD: true,
+    wrongA: true,
+    wrongB: true,
+    wrongC: true,
+    wrongD: true,
+    answerList: [],
+    index: 0,
+    score: 0,
+    colorA: '',
+    colorB: '',
+    colorC: '',
+    colorD: '',
+    colorRight: '#20E418',
+    colorWrong: '#FA1D26',
+    colordefault: '#FFFFFF',
+    //服务器请求题目地址
+    answerUrl: '',
+    //服务器提交错题请求地址
+    submitUrl: '',
+    //错题题号字符串
+    wrongId: [],
+    //错题对应的用户的选项
+    wrongOp: [],
+    //倒计时
+    second: 10,
+    //开始、结束时间
+    beginTime: '',
+    endTime: '',
+  },
+
+  /**
+   * 选择选项按钮事件函数
+   */
+  btnOption: function (e) {
+    var that = this;
+    var select = e.currentTarget.id;
+    var rightAnswer = that.data.answerList[that.data.index].answer;
+    if (select == rightAnswer) {
+      if (select == 'A')
+        this.setData({ colorA: that.data.colorRight, rightA: false });
+      else if (select == 'B')
+        this.setData({ colorB: that.data.colorRight, rightB: false });
+      else if (select == 'C')
+        this.setData({ colorC: that.data.colorRight, rightC: false });
+      else if (select == 'D')
+        this.setData({ colorD: that.data.colorRight, rightD: false });
+      this.setData({ score: that.data.score + 5 })
+    }
+    else {
+      //console.log(that.data.answerList[that.data.index].id)
+      //记录错题题号字符串
+      that.data.wrongId.push(that.data.answerList[that.data.index].id);
+      //记录错题对应的用户的选择
+      that.data.wrongOp.push(select)
+      console.log(that.data.wrongId)
+      console.log(that.data.wrongOp)
+      if (select == 'A')
+        this.setData({ colorA: that.data.colorWrong, wrongA: false });
+      else if (select == 'B')
+        this.setData({ colorB: that.data.colorWrong, wrongB: false });
+      else if (select == 'C')
+        this.setData({ colorC: that.data.colorWrong, wrongC: false });
+      else if (select == 'D')
+        this.setData({ colorD: that.data.colorWrong, wrongD: false });
+      //答错之后显示正确的答案
+      if (rightAnswer == 'A')
+        this.setData({ colorA: that.data.colorRight, rightA: false });
+      else if (rightAnswer == 'B')
+        this.setData({ colorB: that.data.colorRight, rightB: false });
+      else if (rightAnswer == 'C')
+        this.setData({ colorC: that.data.colorRight, rightC: false });
+      else if (rightAnswer == 'D')
+        this.setData({ colorD: that.data.colorRight, rightD: false });
+    }
+    clearTimeout(timer)
+    //延时1S跳转下一题
+    setTimeout(function () {
+      that.nextQuestion();
+    }, 1000)
+  },
+
+  /**
+   * 跳转下一题
+   */
+  nextQuestion: function () {
+    var that = this;
+    //分数
+    console.log('得分:' + that.data.score)
+    if (that.data.index < that.data.answerList.length - 1) {
+      this.setData({
+        second: 10,
+        index: that.data.index + 1,
+        colorA: that.data.colordefault,
+        colorB: that.data.colordefault,
+        colorC: that.data.colordefault,
+        colorD: that.data.colordefault,
+        rightA: true,
+        rightB: true,
+        rightC: true,
+        rightD: true,
+        wrongA: true,
+        wrongB: true,
+        wrongC: true,
+        wrongD: true,
+      });
+      that.countdown()
+    }
+    else {
+      //结束答题时间
+      that.setData({
+        endTime: new Date()
+      })
+      //答题结束向服务器提交错题id
+      that.requestIdService();
+    }
+  },
+
+  /**
+   * 倒计时
+   */
+  countdown: function () {
+    var that = this;
+    var second = that.data.second
+    if (that.data.second == 0) {
+      //记录未选择的题号字符串
+      that.data.wrongId.push(that.data.answerList[that.data.index].id);
+      //记录未选择的题对应的用户的选择
+      that.data.wrongOp.push('未选择答案')
+      console.log(that.data.wrongId)
+      console.log(that.data.wrongOp)
+      //时间到跳转下一题
+      that.nextQuestion()
+    } else {
+      timer = setTimeout(function () {
+        that.setData({
+          second: second - 1
+        });
+        that.countdown();
+      }
+        , 1000)
+    }
+  },
+
+  /**
+   * 计算时间差
+   */
+  countTime: function (beginTime, endTime) {
+    var date1 = beginTime  //开始时间  
+    var date2 = endTime    //结束时间  
+    var date3 = date2.getTime() - date1.getTime();   //时间差的毫秒数 
+    var seconds = Math.floor(date3 / 1000)
+    console.log('开始时间' + this.data.beginTime)
+    console.log('结束时间' + this.data.endTime)
+    console.log("相差时间" + seconds + "秒")
+    return (seconds)
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    //设置服务器请求地址
+    this.setData({
+      answerUrl: app.globalData.urlPrefix + '/cpccs/wxanswerlist.action',
+      submitUrl: app.globalData.urlPrefix + '/cpccs/submitanswerresult.action',
+      //开始答题时间
+      beginTime: new Date(),
+    })
+    //页面加载时请求答题列表
+    that.requestQuestionService();
+    //开始计时
+    that.countdown()
+  },
+
+  /**
+   * 请求答题题目
+   */
+  requestQuestionService: function () {
+    var that = this;
+    //请求答题页的题目列表数组
+    wx.request({
+      url: that.data.answerUrl,
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      //请求成功接收答题列表
+      success: function (res) {
+        console.log(res)
+        if (!res.data.OK) {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+        }
+        else {
+          that.setData({
+            answerList: res.data.answerList,
+          })
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      },
+      fail: function (res) {
+        console.log('请求服务器失败！')
+      }
+    })
+  },
+
+  /**
+   * 提交错题字符串
+   */
+  requestIdService: function () {
+    var that = this;
+    var time = that.countTime(that.data.beginTime, that.data.endTime)
+    wx.request({
+      url: that.data.submitUrl,
+      data: {
+        uid: app.globalData.uid,
+        wrongId: that.data.wrongId,
+        wrongOp: that.data.wrongOp,
+        time: time,
+        score: that.data.score,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      success: function (res) {
+        console.log(res)
+        if (!res.data.ok) {
+          wx.showModal({
+            title: res.data.msg,
+            content: '是否再次提交？',
+            success: function (res) {
+              if (res.confirm) {
+                //console.log('用户点击确定')
+                that.requestIdService()
+              } else if (res.cancel) {
+                //console.log('用户点击取消')
+                wx.switchTab({
+                  url: '../selfPage/selfPage',
+                })
+              }
+            }
+          })
+        }
+        else {
+          //提交成功，答题结束跳转个人页
+          wx.switchTab({
+            url: '../selfPage/selfPage'
+          })
+          wx.showModal({
+            title: res.data.msg,
+            content: '分数：' + that.data.score,
+          })
+        }
+      },
+      fail: function (res) {
+        console.log('请求服务器失败！')
+      },
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

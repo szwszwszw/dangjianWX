@@ -1,0 +1,34 @@
+<view class='container'>
+  <!--登录背景图片-->
+  <view>
+    <image class='image' src='../../images/login.jpg'></image>
+  </view>
+  <!--表单信息-->
+  <form bindsubmit='formSubmit'>
+    <!--登录框-->
+    <view class='border'>
+      <view class='inline'>
+        <image class='icon' src='../../images/icons/user.png'></image>
+        <input class='input' placeholder='请输入学号' name='uid' type='number'></input>
+      </view>
+      <view class='line'></view>
+      <view class='inline'>
+        <image class='icon' src='../../images/icons/pwd.png'></image>
+        <input class='input' placeholder='请输入密码' password='true' name='pwd'></input>
+      </view>
+    </view>
+    <!--登录按钮-->
+    <view>
+      <button class='button' type='primary' form-type='submit'>登录</button>
+      <!--注册和找回密码-->
+      <view class='nav'>
+        <navigator url='../registerPage/registerPage' hover-class='nav-hover' class='nav-default'>注册</navigator>
+        <navigator url='../foundPwdPage/foundPwdPage' hover-class='nav-hover' class='nav-default'>找回密码</navigator>
+      </view>
+    </view>
+  </form>
+
+  <view class='end' bindtap='contactUs'>
+    <text>联系我们</text>
+  </view>
+</view>

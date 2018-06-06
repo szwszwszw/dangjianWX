@@ -1,0 +1,151 @@
+// pages/recordPage/recordPage.js
+var app = getApp();
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    record: [
+      {
+        "question": "要全面深化改革，完善和发展中国特色社会主义制度，推进国家_______现代化。",
+        "answer": "C",
+        "A": "A.治理体系",
+        "B": "B.治理能力",
+        "C": "C.治理体系和治理能力",
+        "D": "D.治理体制和治理能力",
+      },
+      {
+        "question": "哪个选项不属于文具？",
+        "answer": "B",
+        "A": "A.铅笔",
+        "B": "B.手机",
+        "C": "C.钢笔",
+        "D": "D.圆珠笔",
+      },
+      {
+        "question": "哪个选项不属于水果？",
+        "answer": "C",
+        "A": "A.苹果",
+        "B": "B.桃子",
+        "C": "C.汽车",
+        "D": "D.梨子",
+      },
+      {
+        "question": "哪个选项不属于水果？",
+        "answer": "C",
+        "A": "A.苹果",
+        "B": "B.桃子",
+        "C": "C.汽车",
+        "D": "D.梨子",
+      },
+      {
+        "question": "哪个选项不属于水果？",
+        "answer": "C",
+        "A": "A.苹果",
+        "B": "B.桃子",
+        "C": "C.汽车",
+        "D": "D.梨子",
+      }
+    ],
+    uid: '',
+    //服务器请求地址
+    recordUrl: '',
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    this.setData({
+      uid: app.globalData.uid,
+      recordUrl: app.globalData.urlPrefix,
+    });
+    that.requestService()
+  },
+
+  /**
+   * 请求服务器获取错题记录
+   */
+  requestService: function () {
+    var that = this;
+    wx.request({
+      url: that.data.recordUrl,
+      method: 'POST',
+      data: {
+        uid: that.data.uid
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      success: function (res) {
+        if (!res.data.OK) {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+        }
+        else {
+          that.setData({
+            record: res.data.record
+          })
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      },
+      fail: function (res) {
+        console.log('请求服务器失败！')
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})
