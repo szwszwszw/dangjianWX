@@ -86,9 +86,6 @@ Page({
     this.setData({
       mainUrl: app.globalData.urlPrefix + '/cpccs/wxmainpageload.action'
     });
-    wx.showLoading({
-      title: '正在加载，请稍后...',
-    })
     that.requestService();
   },
   /**
@@ -104,7 +101,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
       success: function (res) {
-        wx.hideLoading();
         console.log(res)
         if (!res.data.OK) {
           wx.showToast({
@@ -125,7 +121,6 @@ Page({
         }
       },
       fail: function (res) {
-        wx.hideLoading();
         console.log('请求服务器失败！')
       }
     })

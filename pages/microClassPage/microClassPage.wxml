@@ -1,0 +1,82 @@
+<view class='container'>
+  <!--主页滚动图片，遍历图片地址数组imgUrls-->
+  <swiper class='swiper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--微课程简介-->
+  <view class='margin'>
+    <view class='bettwen'>
+      <view class='title'>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+        <view class='title1'>微课程简介</view>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+      </view>
+      <!--查看更多简介-->
+      <view class='font' bindtap='morejianjie'>查看更多>></view>
+    </view>
+    <!--遍历简介数组List-->
+    <view class='bettwen' wx:for="{{jianjieList}}" wx:key="" wx:if="{{index<3}}">
+      <!--获取简介标题title，并为每一个标题绑定其对应id-->
+      <view bindtap='jianjieDetail' data-detail-id='{{item.id}}'>
+        <text>{{item.title}}</text>
+      </view>
+      <!--获取日期data-->
+      <text class='font'>{{item.date}}</text>
+    </view>
+  </view>
+
+  <!--公共课程-->
+  <view class='margin'>
+    <view class='bettwen'>
+      <view class='title'>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+        <view class='title1'>公共课程</view>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+      </view>
+      <!--查看更多公共课程-->
+      <view class='font' bindtap='morejianjie'>查看更多>></view>
+    </view>
+    <!--遍历数组-->
+    <view class='bettwen' wx:for="{{publicList}}" wx:key="" wx:if="{{index<3}}">
+      <!--获取简介标题title，并为每一个标题绑定其对应id-->
+      <view bindtap='jianjieDetail' data-detail-id='{{item.id}}'>
+        <text>{{item.title}}</text>
+      </view>
+      <!--获取日期data-->
+      <text class='font'>{{item.date}}</text>
+    </view>
+  </view>
+
+  <!--专题课程-->
+  <view class='margin'>
+    <view class='bettwen'>
+      <view class='title'>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+        <view class='title1'>专题系列课程</view>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+        <image class='icon' src='../../images/icons/micoico.png'></image>
+      </view>
+      <!--查看更多简介-->
+      <view class='font' bindtap='morejianjie'>查看更多>></view>
+    </view>
+    <!--遍历简介数组List-->
+    <view class='bettwen' wx:for="{{privateList}}" wx:key="" wx:if="{{index<3}}">
+      <!--获取简介标题title，并为每一个标题绑定其对应id-->
+      <view bindtap='jianjieDetail' data-detail-id='{{item.id}}'>
+        <text>{{item.title}}</text>
+      </view>
+      <!--获取日期data-->
+      <text class='font'>{{item.date}}</text>
+    </view>
+  </view>
+
+</view>

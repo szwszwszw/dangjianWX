@@ -139,9 +139,6 @@ Page({
    * 请求服务器
    */
   requestService: function () {
-    wx.showLoading({
-      title: '正在加载题库...',
-    })
     var that = this;
     //向服务器请求学习的题目列表
     wx.request({
@@ -152,7 +149,6 @@ Page({
       },
       //请求成功得到题目列表
       success: function (res) {
-        wx.hideLoading();
         if (!res.data.OK) {
           wx.showToast({
             title: res.data.msg,
@@ -170,7 +166,6 @@ Page({
         }
       },
       fail: function (res) {
-        wx.hideLoading();
         console.log('请求服务器失败！')
       }
     })
